@@ -22,12 +22,14 @@ const signup = async (req, res) => {
 
 const isExistPhone = async (req, res) => {
   const phoneNumber = req.body.phone;
+  console.log(phoneNumber)
   try {
     const result = await User.findOne({ phone: phoneNumber });
+    console.log("RESUT", result)
     if (result) {
       res.json({ code: 200, isExist: true });
     } else {
-      res.send({ code: 200, isExist: false });
+      res.send({ code: 200, isExist: true });
     }
   } catch (error) {
     console.log(error);
